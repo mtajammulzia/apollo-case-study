@@ -1,10 +1,12 @@
-// import { useState } from "react";
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-// import "./App.css";
+import { AuthProvider } from "./contexts/Auth";
+import Router from "./router";
 
 function App() {
-  return <h1>Hello world</h1>;
+  return (
+    <AuthProvider>
+      <Router />
+    </AuthProvider>
+  );
 }
 
 export default App;
