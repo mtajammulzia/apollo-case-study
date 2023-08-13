@@ -8,7 +8,7 @@ export type IColumn<Type> = {
 };
 
 export type IRow<Type extends string> = {
-  [Property in Type]: string | number;
+  [Property in Type]: string | number | boolean;
 };
 
 export type UserTableFields =
@@ -21,3 +21,5 @@ export type UserTableFields =
   | "website"
   | "company"
   | "action-detailView";
+
+export type TodoTableFields = "id" | "userId" | "title" | "completed" | "action-detailView";

@@ -11,13 +11,14 @@ import {
   TableSortLabel,
   IconButton,
   Tooltip,
+  Checkbox,
 } from "@mui/material";
-import { UserTableFields, IColumn, IRow } from "../../utilities/types/table";
+import { UserTableFields, IColumn, IRow, TodoTableFields } from "../../utilities/types/table";
 import { RemoveRedEye } from "@mui/icons-material";
 
 interface CustomTableProps {
-  columns: IColumn<UserTableFields>[];
-  data: IRow<UserTableFields>[];
+  columns: IColumn<UserTableFields>[] | IColumn<TodoTableFields>[];
+  data: IRow<UserTableFields>[] | IRow<TodoTableFields>[];
 }
 
 function CustomTable(props: CustomTableProps) {
@@ -25,7 +26,7 @@ function CustomTable(props: CustomTableProps) {
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(20);
-  const [rows, setRows] = useState<{ [key: string]: string | number }[]>(
+  const [rows, setRows] = useState<{ [key: string]: string | number | boolean }[]>(
     data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
   );
   const [sortBy, setSortBy] = useState("id");
@@ -65,7 +66,7 @@ function CustomTable(props: CustomTableProps) {
   };
 
   const sorterFunction = (
-    data: { [key: string]: string | number }[],
+    data: { [key: string]: string | number | boolean }[],
     orderBy: string,
     orderDirection: "asc" | "desc"
   ) => {
@@ -123,6 +124,13 @@ function CustomTable(props: CustomTableProps) {
                             <RemoveRedEye sx={{ color: "green", fontSize: "18px" }} />
                           </IconButton>
                         </Tooltip>
+                      </TableCell>
+                    );
+                  }
+                  if (column.id === "completed") {
+                    return (
+                      <TableCell key={`${cellValue}-${index}`} style={{ padding: "10px" }}>
+                        <Checkbox name="username" checked={!!cellValue} />
                       </TableCell>
                     );
                   }
