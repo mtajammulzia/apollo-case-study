@@ -27,7 +27,7 @@ export const AlbumsSection: FC<AlbumsProps> = ({ userAlbums }) => {
                 </DetailValue>
                 <AlbumPhotosOverlay>
                   <Tooltip title="View Album" placement="top">
-                    <ViewIcon to="">
+                    <ViewIcon to={`/album/${album.id}`}>
                       <Preview sx={{ fontSize: "84px", color: "black" }} />
                     </ViewIcon>
                   </Tooltip>

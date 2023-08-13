@@ -8,12 +8,12 @@ import { Divider } from "@mui/material";
 import { PostsSection } from "./components/Posts";
 import { TodosSection } from "./components/Todos";
 
-type QuizParams = {
+type UserDetailsParams = {
   userId: string;
 };
 
 const UserDetails: FC = () => {
-  const { userId } = useParams<QuizParams>();
+  const { userId } = useParams<UserDetailsParams>();
   const { userData, isLoading } = useUserData(userId || "");
 
   // Display loading state when api call is being processed.

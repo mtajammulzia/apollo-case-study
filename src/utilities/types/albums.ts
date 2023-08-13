@@ -1,3 +1,5 @@
+import { IApiUser } from "./user";
+
 export type IApiAlbum = {
   userId: number;
   id: number;
@@ -14,4 +16,8 @@ export type IApiPhoto = {
 
 export interface IAlbumWithPhotos extends IApiAlbum {
   photos: IApiPhoto[];
+}
+
+export interface IAlbumData extends IAlbumWithPhotos {
+  userDetails: IApiUser;
 }

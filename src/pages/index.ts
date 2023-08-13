@@ -6,5 +6,6 @@ import Todos from "./Todos";
 import Posts from "./Posts";
 import Albums from "./Albums";
 import UserDetails from "./UserDetails";
+import AlbumDetails from "./AlbumDetails";
 
-export { Dashboard, SignIn, About, Users, Todos, Posts, Albums, UserDetails };
+export { Dashboard, SignIn, About, Users, Todos, Posts, Albums, UserDetails, AlbumDetails };

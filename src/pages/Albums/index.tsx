@@ -28,7 +28,7 @@ const Albums: FC = () => {
         id: item.id,
         userId: item.userId,
         title: item.title,
-        "action-detailView": item.id,
+        "action-detailView": `/album/${item.id}`,
       };
       return row;
     });
