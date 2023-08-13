@@ -3,9 +3,14 @@ import { UserTableFields, IRow } from "../../utilities/types/table";
 import { Table } from "../../UI";
 import { USER_TABLE_COLUMNS } from "../../utilities/constants/table";
 import { useListUsers } from "../../hooks/useListUsers";
-import { HeadSection, Heading, SearchResult, SearchResultsWrapper } from "./styles";
 import { Box, Checkbox, FormControlLabel, FormGroup, Paper, TextField } from "@mui/material";
 import { useDebounce } from "../../hooks/useDebounce";
+import {
+  HeadSection,
+  Heading,
+  SearchResultsWrapper,
+  SearchResult,
+} from "../../utilities/styles/conmon";
 
 const Users: FC = () => {
   const [query, setQuery] = useState("");

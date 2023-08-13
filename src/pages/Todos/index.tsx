@@ -4,8 +4,13 @@ import { IRow, TodoTableFields } from "../../utilities/types/table";
 import { useListTodos } from "../../hooks/useListTodos";
 import { Table } from "../../UI";
 import { TODO_TABLE_COLUMNS } from "../../utilities/constants/table";
-import { HeadSection, Heading, SearchResult, SearchResultsWrapper } from "./styles";
 import { Box, TextField, Paper, FormGroup, FormControlLabel, Checkbox } from "@mui/material";
+import {
+  HeadSection,
+  Heading,
+  SearchResultsWrapper,
+  SearchResult,
+} from "../../utilities/styles/conmon";
 
 const Todos: FC = () => {
   const [query, setQuery] = useState("");
