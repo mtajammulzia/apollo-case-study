@@ -15,7 +15,7 @@ import { useListAlbum } from "../../hooks/useListAlbums";
 const Albums: FC = () => {
   const [query, setQuery] = useState("");
   const debouncedQuery = useDebounce(query, 500);
-  const { albumList, isLoading } = useListAlbum();
+  const { albumList } = useListAlbum();
   const [searchFilters, setSearchFilters] = useState({
     title: true,
   });
@@ -32,13 +32,16 @@ const Albums: FC = () => {
       };
       return row;
     });
-  }, [albumList, isLoading]);
+  }, [albumList]);
 
   const searchResults = useMemo<string[]>(() => {
     const emptyResults: string[] = [];
-    if (query === "") return emptyResults;
+    if (debouncedQuery === "") return emptyResults;
     return albumList.reduce<string[]>((acc, curr) => {
-      if (searchFilters.title && curr.title.toLowerCase().indexOf(query.toLowerCase()) !== -1)
+      if (
+        searchFilters.title &&
+        curr.title.toLowerCase().indexOf(debouncedQuery.toLowerCase()) !== -1
+      )
         return [...acc, curr.title];
       return acc;
     }, emptyResults);

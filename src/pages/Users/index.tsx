@@ -11,18 +11,16 @@ import {
   SearchResultsWrapper,
   SearchResult,
 } from "../../utilities/styles/conmon";
-import { useNavigate } from "react-router-dom";
 
 const Users: FC = () => {
   const [query, setQuery] = useState("");
   const debouncedQuery = useDebounce(query, 500);
-  const { userList, isLoading } = useListUsers();
+  const { userList } = useListUsers();
   const [searchFilters, setSearchFilters] = useState({
     username: true,
     name: true,
     email: true,
   });
-  const navigate = useNavigate();
 
   const rows = useMemo<IRow<UserTableFields>[]>(() => {
     // We can use rest operator or directly pass userList to Table since
@@ -41,18 +39,27 @@ const Users: FC = () => {
       };
       return row;
     });
-  }, [userList, isLoading]);
+  }, [userList]);
 
   const searchResults = useMemo<string[]>(() => {
     const emptyResults: string[] = [];
-    if (query === "") return emptyResults;
+    if (debouncedQuery === "") return emptyResults;
     return userList.reduce<string[]>((acc, curr) => {
-      if (searchFilters.username && curr.username.toLowerCase().indexOf(query.toLowerCase()) !== -1)
+      if (
+        searchFilters.username &&
+        curr.username.toLowerCase().indexOf(debouncedQuery.toLowerCase()) !== -1
+      )
         return [...acc, curr.name];
-      if (searchFilters.name && curr.name.toLowerCase().indexOf(query.toLowerCase()) !== -1)
+      if (
+        searchFilters.name &&
+        curr.name.toLowerCase().indexOf(debouncedQuery.toLowerCase()) !== -1
+      )
         return [...acc, curr.name];
-      if (searchFilters.email && curr.email.toLowerCase().indexOf(query.toLowerCase()) !== -1) {
-        console.log(curr.email.indexOf(query));
+      if (
+        searchFilters.email &&
+        curr.email.toLowerCase().indexOf(debouncedQuery.toLowerCase()) !== -1
+      ) {
+        console.log(curr.email.indexOf(debouncedQuery));
         return [...acc, curr.name];
       }
       return acc;

@@ -79,6 +79,7 @@ function CustomTable(props: CustomTableProps) {
     orderBy: string,
     orderDirection: "asc" | "desc"
   ) => {
+    // eslint-disable-next-line
     return data.slice().sort((a: any, b: any) => {
       if (a[orderBy] < b[orderBy]) {
         return orderDirection === "asc" ? 1 : -1;
