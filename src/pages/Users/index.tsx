@@ -11,6 +11,7 @@ import {
   SearchResultsWrapper,
   SearchResult,
 } from "../../utilities/styles/conmon";
+import { useNavigate } from "react-router-dom";
 
 const Users: FC = () => {
   const [query, setQuery] = useState("");
@@ -21,6 +22,7 @@ const Users: FC = () => {
     name: true,
     email: true,
   });
+  const navigate = useNavigate();
 
   const rows = useMemo<IRow<UserTableFields>[]>(() => {
     // We can use rest operator or directly pass userList to Table since
@@ -35,7 +37,7 @@ const Users: FC = () => {
         website: item.website,
         address: item.address,
         company: item.company,
-        "action-detailView": item.id,
+        "action-detailView": `/user/${item.id}`,
       };
       return row;
     });

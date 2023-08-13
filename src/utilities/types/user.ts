@@ -1,3 +1,7 @@
+import { IAlbumWithPhotos } from "./albums";
+import { IPostWithComments } from "./posts";
+import { IApiTodo } from "./todos";
+
 export type IApiAddress = {
   street: string;
   suite: string;
@@ -35,4 +39,11 @@ export type IParsedUser = {
   phone: string;
   website: string;
   company: string;
+};
+
+export type IUserData = {
+  userDetails: IApiUser;
+  userAlbums: IAlbumWithPhotos[];
+  userPosts: IPostWithComments[];
+  userTodos: IApiTodo[];
 };

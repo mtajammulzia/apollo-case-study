@@ -9,8 +9,12 @@ import {
 export const ROUTES = {
   SIGN_IN: "/signin",
   DASHBOARD: "/",
+  // User routes
   USERS: "/users",
+  USER: "/user/:userId",
+  // Album routes
   ALBUMS: "/albums",
+  ALBUM: "/album/:albumId",
   TODOS: "/todos",
   ABOUT: "/about",
 };

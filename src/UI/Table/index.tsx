@@ -21,6 +21,7 @@ import {
   AlbumTableFields,
 } from "../../utilities/types/table";
 import { RemoveRedEye } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 
 interface CustomTableProps {
   columns: IColumn<UserTableFields>[] | IColumn<TodoTableFields>[] | IColumn<AlbumTableFields>[];
@@ -37,6 +38,8 @@ function CustomTable(props: CustomTableProps) {
   );
   const [sortBy, setSortBy] = useState("id");
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("desc");
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     setRows(data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage));
@@ -126,7 +129,7 @@ function CustomTable(props: CustomTableProps) {
                     return (
                       <TableCell key={`${cellValue}-${index}`} style={{ padding: "10px" }}>
                         <Tooltip title="View Details">
-                          <IconButton onClick={() => console.log(cellValue)}>
+                          <IconButton onClick={() => navigate(cellValue.toString())}>
                             <RemoveRedEye sx={{ color: "green", fontSize: "18px" }} />
                           </IconButton>
                         </Tooltip>

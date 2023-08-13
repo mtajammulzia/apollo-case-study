@@ -4,5 +4,7 @@ import About from "./About";
 import Users from "./Users";
 import Todos from "./Todos";
 import Posts from "./Posts";
+import Albums from "./Albums";
+import UserDetails from "./UserDetails";
 
-export { Dashboard, SignIn, About, Users, Todos, Posts };
+export { Dashboard, SignIn, About, Users, Todos, Posts, Albums, UserDetails };

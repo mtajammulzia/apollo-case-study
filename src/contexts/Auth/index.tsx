@@ -15,7 +15,7 @@ const AuthContext = createContext<IAuthContext>({
 });
 
 export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [isConnected, setIsConnected] = useState(false);
+  const [isConnected, setIsConnected] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
   const login = useCallback((username: string, password: string) => {
