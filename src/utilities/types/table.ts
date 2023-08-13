@@ -23,3 +23,5 @@ export type UserTableFields =
   | "action-detailView";
 
 export type TodoTableFields = "id" | "userId" | "title" | "completed" | "action-detailView";
+
+export type AlbumTableFields = "id" | "userId" | "title" | "action-detailView";

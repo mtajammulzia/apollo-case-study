@@ -13,12 +13,18 @@ import {
   Tooltip,
   Checkbox,
 } from "@mui/material";
-import { UserTableFields, IColumn, IRow, TodoTableFields } from "../../utilities/types/table";
+import {
+  UserTableFields,
+  IColumn,
+  IRow,
+  TodoTableFields,
+  AlbumTableFields,
+} from "../../utilities/types/table";
 import { RemoveRedEye } from "@mui/icons-material";
 
 interface CustomTableProps {
-  columns: IColumn<UserTableFields>[] | IColumn<TodoTableFields>[];
-  data: IRow<UserTableFields>[] | IRow<TodoTableFields>[];
+  columns: IColumn<UserTableFields>[] | IColumn<TodoTableFields>[] | IColumn<AlbumTableFields>[];
+  data: IRow<UserTableFields>[] | IRow<TodoTableFields>[] | IRow<AlbumTableFields>[];
 }
 
 function CustomTable(props: CustomTableProps) {

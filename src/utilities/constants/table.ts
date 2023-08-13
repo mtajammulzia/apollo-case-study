@@ -1,4 +1,4 @@
-import { IColumn, TodoTableFields, UserTableFields } from "../types/table";
+import { AlbumTableFields, IColumn, TodoTableFields, UserTableFields } from "../types/table";
 
 export const USER_TABLE_COLUMNS: IColumn<UserTableFields>[] = [
   { id: "id", name: "Id", isSortable: true },
@@ -17,5 +17,12 @@ export const TODO_TABLE_COLUMNS: IColumn<TodoTableFields>[] = [
   { id: "userId", name: "User Id", isSortable: true },
   { id: "title", name: "Title", isSortable: true },
   { id: "completed", name: "Is Completed", isSortable: false },
+  { id: "action-detailView", name: "Action", isSortable: false },
+];
+
+export const ALBUM_TABLE_COLUMNS: IColumn<AlbumTableFields>[] = [
+  { id: "id", name: "Id", isSortable: true },
+  { id: "userId", name: "User Id", isSortable: true },
+  { id: "title", name: "Title", isSortable: true },
   { id: "action-detailView", name: "Action", isSortable: false },
 ];

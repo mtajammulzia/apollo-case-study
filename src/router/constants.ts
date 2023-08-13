@@ -10,7 +10,7 @@ export const ROUTES = {
   SIGN_IN: "/signin",
   DASHBOARD: "/",
   USERS: "/users",
-  POSTS: "/posts",
+  ALBUMS: "/albums",
   TODOS: "/todos",
   ABOUT: "/about",
 };
@@ -27,8 +27,8 @@ export const NAV_LINKS = [
     Icon: PeopleOutline,
   },
   {
-    title: "Posts",
-    route: ROUTES.POSTS,
+    title: "Albums",
+    route: ROUTES.ALBUMS,
     Icon: DynamicFeedOutlined,
   },
   {
