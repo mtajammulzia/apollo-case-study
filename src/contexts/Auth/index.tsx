@@ -1,4 +1,12 @@
-import { FC, PropsWithChildren, createContext, useCallback, useContext, useState } from "react";
+import {
+  FC,
+  PropsWithChildren,
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 interface IAuthContext {
   login: (username: string, password: string) => void;
@@ -17,11 +25,20 @@ const AuthContext = createContext<IAuthContext>({
 });
 
 export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [isConnected, setIsConnected] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isConnected, setIsConnected] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const isLoggedIn = sessionStorage.getItem("token");
+    if (isLoggedIn === "loggedIn") {
+      setIsConnected(true);
+    }
+    setIsLoading(false);
+  }, []);
 
   const login = useCallback((username: string, password: string) => {
     console.log(username, password);
+    sessionStorage.setItem("token", "loggedIn");
     setIsLoading(true);
     setIsConnected(true);
     setIsLoading(false);
@@ -29,6 +46,7 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 
   const logout = useCallback(() => {
     setIsLoading(true);
+    sessionStorage.removeItem("token");
     setIsConnected(false);
     setIsLoading(false);
   }, []);

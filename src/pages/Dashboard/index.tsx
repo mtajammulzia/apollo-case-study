@@ -42,7 +42,9 @@ const Dashboard: FC = () => {
             <div>
               <CardTitle variant="h3">Users</CardTitle>
               <div style={{ display: "flex" }}>
-                <CardTitle variant="h5">{analytics.users.count}</CardTitle>
+                <CardTitle data-testid="user-count" variant="h5">
+                  {analytics.users.count}
+                </CardTitle>
                 <CardTitle
                   variant="h5"
                   style={{ color: analytics.users.change >= 0 ? "#03d22c" : "red" }}
@@ -61,7 +63,9 @@ const Dashboard: FC = () => {
             <div>
               <CardTitle variant="h3">Posts</CardTitle>
               <div style={{ display: "flex" }}>
-                <CardTitle variant="h5">{analytics.posts.count}</CardTitle>
+                <CardTitle variant="h5" data-testid="post-count">
+                  {analytics.posts.count}
+                </CardTitle>
                 <CardTitle
                   variant="h5"
                   style={{ color: analytics.posts.change >= 0 ? "#03d22c" : "red" }}
@@ -80,7 +84,9 @@ const Dashboard: FC = () => {
             <div>
               <CardTitle variant="h3">Todos</CardTitle>
               <div style={{ display: "flex" }}>
-                <CardTitle variant="h5">{analytics.todos.count}</CardTitle>
+                <CardTitle variant="h5" data-testid="todo-count">
+                  {analytics.todos.count}
+                </CardTitle>
                 <CardTitle
                   variant="h5"
                   style={{ color: analytics.todos.change >= 0 ? "#03d22c" : "red" }}
