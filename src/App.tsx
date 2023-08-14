@@ -24,7 +24,19 @@ function App() {
   }, []);
 
   if (!isOnline) {
-    return <h1>Oops! You seem to be disconnected from the Internet</h1>;
+    return (
+      <div
+        style={{
+          display: "flex",
+          height: "100vh",
+          width: "100vw",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <h1>Oops! You seem to be disconnected from the Internet</h1>
+      </div>
+    );
   }
 
   return (

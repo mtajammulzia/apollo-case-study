@@ -5,7 +5,7 @@ import { KeyValuePair } from "../utilities/types/general";
 
 export const useAnalytics = () => {
   const [data, setData] = useState<IAnalytics>();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [errors, setErrors] = useState<KeyValuePair<string>>({});
 
   const fetchData = async () => {
@@ -13,8 +13,7 @@ export const useAnalytics = () => {
       const analytics = await getAnalytics(true);
       setData(analytics);
     } catch (error: any) {
-      console.log(error);
-      setErrors({ error: error });
+      setErrors({ error: error.message });
     }
   };
 
