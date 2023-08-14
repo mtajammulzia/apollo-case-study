@@ -15,7 +15,7 @@ import { useListAlbum } from "../../hooks/useListAlbums";
 const Albums: FC = () => {
   const [query, setQuery] = useState("");
   const debouncedQuery = useDebounce(query, 500);
-  const { albumList } = useListAlbum();
+  const { albumList, isLoading } = useListAlbum();
   const [searchFilters, setSearchFilters] = useState({
     title: true,
   });
@@ -95,7 +95,12 @@ const Albums: FC = () => {
           </FormGroup>
         </Box>
       </HeadSection>
-      <Table columns={ALBUM_TABLE_COLUMNS} data={rows}></Table>;
+      {/* Loading state while table data is loaded, we can also pass a skeleton here. */}
+      {isLoading ? (
+        <Heading>Loading...</Heading>
+      ) : (
+        <Table columns={ALBUM_TABLE_COLUMNS} data={rows}></Table>
+      )}
     </div>
   );
 };

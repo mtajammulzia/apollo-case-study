@@ -96,7 +96,12 @@ const Todos: FC = () => {
           </FormGroup>
         </Box>
       </HeadSection>
-      <Table columns={TODO_TABLE_COLUMNS} data={rows}></Table>;
+      {/* Loading state while table data is loaded, we can also pass a skeleton here. */}
+      {isLoading ? (
+        <Heading>Loading...</Heading>
+      ) : (
+        <Table columns={TODO_TABLE_COLUMNS} data={rows}></Table>
+      )}
     </div>
   );
 };

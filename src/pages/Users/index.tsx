@@ -15,7 +15,7 @@ import {
 const Users: FC = () => {
   const [query, setQuery] = useState("");
   const debouncedQuery = useDebounce(query, 500);
-  const { userList } = useListUsers();
+  const { userList, isLoading } = useListUsers();
   const [searchFilters, setSearchFilters] = useState({
     username: true,
     name: true,
@@ -136,7 +136,12 @@ const Users: FC = () => {
           </FormGroup>
         </Box>
       </HeadSection>
-      <Table columns={USER_TABLE_COLUMNS} data={rows}></Table>;
+      {/* Loading state while table data is loaded, we can also pass a skeleton here. */}
+      {isLoading ? (
+        <Heading>Loading...</Heading>
+      ) : (
+        <Table columns={USER_TABLE_COLUMNS} data={rows}></Table>
+      )}
     </div>
   );
 };
