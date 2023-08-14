@@ -8,8 +8,9 @@ interface IAuthContext {
 }
 
 const AuthContext = createContext<IAuthContext>({
-  // eslint-disable-next-line
-  login: (username: string, password: string) => {},
+  login: (username: string, password: string) => {
+    console.log(username, password);
+  },
   logout: () => {},
   isConnected: false,
   isLoading: false,

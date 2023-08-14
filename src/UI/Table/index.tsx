@@ -46,7 +46,7 @@ function CustomTable(props: CustomTableProps) {
   }, [data]);
 
   const handlePageChange = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent> | null,
+    _: React.MouseEvent<HTMLButtonElement, MouseEvent> | null,
     newPage: number
   ) => {
     setPage(newPage);

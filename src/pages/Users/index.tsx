@@ -75,7 +75,7 @@ const Users: FC = () => {
   };
 
   return (
-    <div>
+    <>
       <HeadSection>
         <Heading variant="h4">Users</Heading>
         <Box sx={{ display: "flex", flexDirection: "row" }}>
@@ -142,7 +142,7 @@ const Users: FC = () => {
       ) : (
         <Table columns={USER_TABLE_COLUMNS} data={rows}></Table>
       )}
-    </div>
+    </>
   );
 };
 
