@@ -11,7 +11,7 @@ export const getAnalytics = (pass: boolean): Promise<IAnalytics> => {
           todos: { count: 250, change: 2 },
         });
       }
-      reject("Failed to fetch analytics");
+      reject({ message: "Failed to fetch analytics" });
     }, 700);
   });
 };

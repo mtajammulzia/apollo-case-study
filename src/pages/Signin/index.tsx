@@ -5,7 +5,7 @@ import { useAuth } from "../../contexts/Auth";
 import { Navigate } from "react-router-dom";
 
 const SignIn: FC = () => {
-  const { isConnected, login } = useAuth();
+  const { isConnected, login, isLoading } = useAuth();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -14,9 +14,9 @@ const SignIn: FC = () => {
     login(username, password);
   };
 
-  if (isConnected) {
-    return <Navigate to="/" />;
-  }
+  if (isLoading) return <></>;
+
+  if (isConnected) return <Navigate to="/" />;
 
   return (
     <SignInWrapper>
