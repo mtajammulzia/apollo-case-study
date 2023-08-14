@@ -10,7 +10,7 @@ I opted for JSON Placeholder API. Pages for analytics, list users, list albums, 
 User credentials are not validated nor authenticated, can be logged in with any username and password. Login status is persisted in session storage.
 
 ### Challenges:
-No big challenge, one small thing was to handle sidebar state (open, close) while switching between pages. This could have been done with saving state in session storage and making a context. However, I opted for a more sophistacated solution with react-router-dom v6's ```js <Outlet />``` component. Check router for further details.
+No big challenge, one small thing was to handle sidebar state (open, close) while switching between pages. This could have been done with saving state in session storage and making a context. However, I opted for a more sophistacated solution with react-router-dom v6's ```<Outlet />``` component. Check router for further details.
 
 ## Running the app:
 There aren't any configurations that need to be made or any sensitive environment variables. Therefore running the app is straightforward:
