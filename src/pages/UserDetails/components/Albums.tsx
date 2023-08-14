@@ -4,7 +4,6 @@ import { HeadSection, Heading } from "../../../utilities/styles/conmon";
 import { Box, Grid, Tooltip } from "@mui/material";
 import { AlbumPhotosOverlay, DetailValue, ViewIcon } from "../styles";
 import { Preview } from "@mui/icons-material";
-import { Link } from "react-router-dom";
 
 type AlbumsProps = {
   userAlbums: IAlbumWithPhotos[];

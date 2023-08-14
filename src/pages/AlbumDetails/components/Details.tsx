@@ -20,7 +20,7 @@ export const DetailsSection: FC<DetailsProps> = ({ albumData }) => {
         <Heading variant="h4">Album Details</Heading>
       </HeadSection>
       <Grid container spacing={2} p={2}>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={8}>
           <DetailsCard>
             <div>
               <DetailKey>Album Name:&nbsp;</DetailKey>

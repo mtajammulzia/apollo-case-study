@@ -11,7 +11,6 @@ import {
   SearchResultsWrapper,
   SearchResult,
 } from "../../utilities/styles/conmon";
-import { useNavigate } from "react-router-dom";
 
 const Users: FC = () => {
   const [query, setQuery] = useState("");
@@ -22,7 +21,6 @@ const Users: FC = () => {
     name: true,
     email: true,
   });
-  const navigate = useNavigate();
 
   const rows = useMemo<IRow<UserTableFields>[]>(() => {
     // We can use rest operator or directly pass userList to Table since
@@ -41,18 +39,27 @@ const Users: FC = () => {
       };
       return row;
     });
-  }, [userList, isLoading]);
+  }, [userList]);
 
   const searchResults = useMemo<string[]>(() => {
     const emptyResults: string[] = [];
-    if (query === "") return emptyResults;
+    if (debouncedQuery === "") return emptyResults;
     return userList.reduce<string[]>((acc, curr) => {
-      if (searchFilters.username && curr.username.toLowerCase().indexOf(query.toLowerCase()) !== -1)
+      if (
+        searchFilters.username &&
+        curr.username.toLowerCase().indexOf(debouncedQuery.toLowerCase()) !== -1
+      )
         return [...acc, curr.name];
-      if (searchFilters.name && curr.name.toLowerCase().indexOf(query.toLowerCase()) !== -1)
+      if (
+        searchFilters.name &&
+        curr.name.toLowerCase().indexOf(debouncedQuery.toLowerCase()) !== -1
+      )
         return [...acc, curr.name];
-      if (searchFilters.email && curr.email.toLowerCase().indexOf(query.toLowerCase()) !== -1) {
-        console.log(curr.email.indexOf(query));
+      if (
+        searchFilters.email &&
+        curr.email.toLowerCase().indexOf(debouncedQuery.toLowerCase()) !== -1
+      ) {
+        console.log(curr.email.indexOf(debouncedQuery));
         return [...acc, curr.name];
       }
       return acc;
@@ -68,7 +75,7 @@ const Users: FC = () => {
   };
 
   return (
-    <div>
+    <>
       <HeadSection>
         <Heading variant="h4">Users</Heading>
         <Box sx={{ display: "flex", flexDirection: "row" }}>
@@ -129,8 +136,13 @@ const Users: FC = () => {
           </FormGroup>
         </Box>
       </HeadSection>
-      <Table columns={USER_TABLE_COLUMNS} data={rows}></Table>;
-    </div>
+      {/* Loading state while table data is loaded, we can also pass a skeleton here. */}
+      {isLoading ? (
+        <Heading>Loading...</Heading>
+      ) : (
+        <Table columns={USER_TABLE_COLUMNS} data={rows}></Table>
+      )}
+    </>
   );
 };
 

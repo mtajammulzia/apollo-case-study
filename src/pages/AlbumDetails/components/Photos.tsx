@@ -3,8 +3,6 @@ import { IAlbumData } from "../../../utilities/types/albums";
 import { HeadSection, Heading } from "../../../utilities/styles/conmon";
 import { Grid } from "@mui/material";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 
 type PhotosSectionProps = {
@@ -51,7 +49,7 @@ export const PhotosSection: FC<PhotosSectionProps> = ({ albumData }) => {
 };
 
 const style = {
-  position: "absolute" as "absolute",
+  position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",

@@ -32,13 +32,16 @@ const Albums: FC = () => {
       };
       return row;
     });
-  }, [albumList, isLoading]);
+  }, [albumList]);
 
   const searchResults = useMemo<string[]>(() => {
     const emptyResults: string[] = [];
-    if (query === "") return emptyResults;
+    if (debouncedQuery === "") return emptyResults;
     return albumList.reduce<string[]>((acc, curr) => {
-      if (searchFilters.title && curr.title.toLowerCase().indexOf(query.toLowerCase()) !== -1)
+      if (
+        searchFilters.title &&
+        curr.title.toLowerCase().indexOf(debouncedQuery.toLowerCase()) !== -1
+      )
         return [...acc, curr.title];
       return acc;
     }, emptyResults);
@@ -92,7 +95,12 @@ const Albums: FC = () => {
           </FormGroup>
         </Box>
       </HeadSection>
-      <Table columns={ALBUM_TABLE_COLUMNS} data={rows}></Table>;
+      {/* Loading state while table data is loaded, we can also pass a skeleton here. */}
+      {isLoading ? (
+        <Heading>Loading...</Heading>
+      ) : (
+        <Table columns={ALBUM_TABLE_COLUMNS} data={rows}></Table>
+      )}
     </div>
   );
 };
