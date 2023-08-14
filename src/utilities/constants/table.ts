@@ -17,7 +17,7 @@ export const TODO_TABLE_COLUMNS: IColumn<TodoTableFields>[] = [
   { id: "userId", name: "User Id", isSortable: true },
   { id: "title", name: "Title", isSortable: true },
   { id: "completed", name: "Is Completed", isSortable: false },
-  { id: "action-detailView", name: "Action", isSortable: false },
+  // { id: "action-detailView", name: "Action", isSortable: false },
 ];
 
 export const ALBUM_TABLE_COLUMNS: IColumn<AlbumTableFields>[] = [
