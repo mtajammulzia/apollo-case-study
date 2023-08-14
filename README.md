@@ -22,3 +22,7 @@ or
 
 - Build and run via bundle
 ```yarn build```
+
+## Running tests:
+I have added sample tests for Dashboard and Signin page, other pages follow similar pattern.
+```yarn test```
